@@ -1,6 +1,3 @@
-import inspect
-import sys
-
 from ragas.metrics._answer_correctness import AnswerCorrectness, answer_correctness
 from ragas.metrics._answer_relevance import (
     AnswerRelevancy,
@@ -21,8 +18,8 @@ from ragas.metrics._context_entities_recall import (
 from ragas.metrics._context_precision import (
     ContextPrecision,
     ContextUtilization,
-    LLMContextPrecisionWithReference,
     LLMContextPrecisionWithoutReference,
+    LLMContextPrecisionWithReference,
     NonLLMContextPrecisionWithReference,
     context_precision,
 )
@@ -46,6 +43,14 @@ from ragas.metrics._goal_accuracy import (
 from ragas.metrics._instance_specific_rubrics import (
     InstanceRubricsScoreWithoutReference,
     InstanceRubricsWithReference,
+)
+from ragas.metrics._multi_modal_faithfulness import (
+    MultiModalFaithfulness,
+    multimodal_faithness,
+)
+from ragas.metrics._multi_modal_relevance import (
+    MultiModalRelevance,
+    multimodal_relevance,
 )
 from ragas.metrics._noise_sensitivity import NoiseSensitivity
 from ragas.metrics._rogue_score import RougeScore
@@ -107,11 +112,8 @@ __all__ = [
     "DistanceMeasure",
     "TopicAdherenceScore",
     "LLMSQLEquivalence",
-]
-
-current_module = sys.modules[__name__]
-ALL_METRICS = [
-    obj
-    for name, obj in inspect.getmembers(current_module)
-    if name in __all__ and not inspect.isclass(obj) and not inspect.isbuiltin(obj)
+    "MultiModalFaithfulness",
+    "multimodal_faithness",
+    "MultiModalRelevance",
+    "multimodal_relevance",
 ]
